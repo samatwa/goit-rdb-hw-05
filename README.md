@@ -14,7 +14,7 @@ WHERE order_id IN (
 	SELECT order_id
     	FROM orders
     	WHERE shipper_id = 3);
-  3)
+3)
 SELECT 
 	order_id, 
     	AVG(quantity) AS avg_q
