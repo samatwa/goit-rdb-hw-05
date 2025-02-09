@@ -25,3 +25,15 @@ FROM (
    	WHERE quantity > 10
     ) AS t
 GROUP BY order_id;
+
+4)
+WITH temp AS (
+	SELECT *
+    	FROM order_details
+   	 WHERE quantity > 10
+)
+SELECT 
+	order_id, 
+    	ROUND(AVG(quantity)) AS avg_q
+FROM temp
+GROUP BY order_id;
