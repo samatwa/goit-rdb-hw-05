@@ -39,6 +39,8 @@ FROM temp
 GROUP BY order_id;
 
 5)
+DROP FUNCTION IF EXISTS Test;
+
 DELIMITER //
 CREATE FUNCTION  Test(num_1 FLOAT, num_2 FLOAT)
 RETURNS FLOAT
@@ -53,6 +55,15 @@ BEGIN
 	END IF;
     	RETURN result;
 END //
+
 DELIMITER ;
+
+SELECT Test(10.5, 3.2);
+
+SELECT 
+	order_id,
+    	quantity,
+    	Test(CAST(quantity AS FLOAT), 2.3) AS div_q
+FROM order_details;
 
 SELECT Test(10.5, 3.2);
