@@ -37,3 +37,22 @@ SELECT
     	ROUND(AVG(quantity)) AS avg_q
 FROM temp
 GROUP BY order_id;
+
+5)
+DELIMITER //
+CREATE FUNCTION  Test(num_1 FLOAT, num_2 FLOAT)
+RETURNS FLOAT
+DETERMINISTIC
+NO SQL
+BEGIN
+	DECLARE result FLOAT;
+    	IF num_2 = 0 THEN
+		RETURN NULL;
+	ELSE
+		SET result = num_1 / num_2;
+	END IF;
+    	RETURN result;
+END //
+DELIMITER ;
+
+SELECT Test(10.5, 3.2);
